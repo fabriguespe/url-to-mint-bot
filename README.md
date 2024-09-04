@@ -1,4 +1,4 @@
-# coinbase-mint-frame
+# url-to-cb-mint
 
 This project is generated using the [MessageKit](https://message-kit.vercel.app) v1.0.0 CLI and uses the `one-to-one` template. Below are the instructions to set up and run the project.
 
