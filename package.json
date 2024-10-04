@@ -1,5 +1,5 @@
 {
-  "name": "coinbase-mint-frame",
+  "name": "url-to-mint",
   "private": true,
   "type": "module",
   "scripts": {
