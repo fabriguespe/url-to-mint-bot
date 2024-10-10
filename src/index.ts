@@ -46,24 +46,26 @@ run(async (context: HandlerContext) => {
   //https://coinbase-mint.vercel.app/eip155/8453/erc1155/0x9a83e7b27b8a9b68e8dc665a0049f2f004287a20/1
 
   let parsedUrl = null;
+  let isURL = text.includes("https://");
+  if (isURL) {
+    for (const { pattern, transform } of urlPatterns) {
+      const match = text.match(pattern);
 
-  for (const { pattern, transform } of urlPatterns) {
-    const match = text.match(pattern);
-    if (match) {
-      parsedUrl = transform(match[1], match[2], match[3]);
-      break;
+      if (match) {
+        parsedUrl = transform(match[1], match[2], match[3]);
+        break;
+      }
     }
-  }
-
-  if (parsedUrl) {
-    await context.send("Here is your Mint Frame URL: ");
-    await context.send(parsedUrl);
-    return;
-  } else {
-    await context.send(
-      "Error: Unable to parse the provided URL. Please ensure you're sending a valid Zora or Coinbase URL."
-    );
-    return;
+    if (parsedUrl) {
+      await context.send("Here is your Mint Frame URL: ");
+      await context.send(parsedUrl);
+      return;
+    } else {
+      await context.send(
+        "Error: Unable to parse the provided URL. Please ensure you're sending a valid Zora or Coinbase URL."
+      );
+      return;
+    }
   }
 
   await context.send(
