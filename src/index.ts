@@ -30,13 +30,18 @@ run(async (context: HandlerContext) => {
       pattern:
         /https?:\/\/wallet\.coinbase\.com\/nft\/mint\/eip155:(\d+):erc721:([^:]+)/,
       transform: (chain: string, address: string) =>
-        `https://xmtp-coinbase-mint-frame.vercel.app/eip55/${chain}/erc721/${address}`,
+        `https://xmtp-coinbase-mint-frame.vercel.app/eip155/${chain}/erc721/${address}`,
+    },
+    {
+      pattern:
+        /https?:\/\/wallet\.coinbase\.com\/nft\/mint\/eip155:(\d+):erc1155:([^:]+):(\d+)/,
+      transform: (chain: string, address: string, tokenId: string) =>
+        `https://xmtp-coinbase-mint-frame.vercel.app/eip155/${chain}/erc1155/${address}/${tokenId}`,
     },
   ];
   //https://wallet.coinbase.com/nft/mint/eip155:8453:erc1155:0x9a83e7b27b8a9b68e8dc665a0049f2f004287a20:1
   //https://wallet.coinbase.com/nft/mint/eip155:8453:erc721:0x2a8e46E78BA9667c661326820801695dcf1c403E
-  //https://xmtp-coinbase-mint-frame.vercel.app/eip55/8453/erc721/0xf16755b43eE1a458161f0faE5a9124729f4f6B1B
-  //https://xmtp-coinbase-mint-frame.vercel.app/eip155/8453/erc721/0x2a8e46E78BA9667c661326820801695dcf1c403E
+  //https://xmtp-coinbase-mint-frame.vercel.app/eip155/8453/erc721/0xf16755b43eE1a458161f0faE5a9124729f4f6B1B
   let parsedUrl = null;
   for (const { pattern, transform } of urlPatterns) {
     const match = text.match(pattern);
