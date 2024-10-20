@@ -43,7 +43,7 @@ run(async (context: HandlerContext) => {
   //https://wallet.coinbase.com/nft/mint/eip155:8453:erc1155:0x9a83e7b27b8a9b68e8dc665a0049f2f004287a20:1
   //https://wallet.coinbase.com/nft/mint/eip155:8453:erc721:0x2a8e46E78BA9667c661326820801695dcf1c403E
   //https://xmtp-coinbase-mint-frame.vercel.app/eip155/8453/erc721/0xf16755b43eE1a458161f0faE5a9124729f4f6B1B
-  //https://coinbase-mint.vercel.app/eip155/8453/erc1155/0x9a83e7b27b8a9b68e8dc665a0049f2f004287a20/1
+  //https://xmtp-coinbase-mint-frame.vercel.app/eip155/8453/erc1155/0x9a83e7b27b8a9b68e8dc665a0049f2f004287a20/1
 
   let parsedUrl = null;
   let isURL = text.includes("https://");
